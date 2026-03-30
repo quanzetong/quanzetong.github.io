@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>全泽同 - 个人主页 | Zetong Quan</title>
+  <title>全泽同 - 个人主页 | Jayden Quan</title>
   
   <!-- 引入 Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -250,10 +250,227 @@
       box-shadow: 0 6px 16px rgba(108, 149, 181, 0.35);
       filter: brightness(1.05);
     }
+
+    .date-badge {
+      background: linear-gradient(135deg, rgba(108, 149, 181, 0.12), rgba(236, 112, 125, 0.12));
+      color: #4b5563 !important;
+      padding: 0.25rem 0.9rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6), 0 4px 10px rgba(0,0,0,0.03);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
   </style>
+
+  <style>
+    /* 为所有核心元素注入平滑切换动画 */
+    body, nav, .glass-card, .section-title, .skill-tag, .avatar-wrapper, .btn-primary, .btn-secondary, canvas, .bg-grid, p, h1, h2, h3, h4, span, div, i {
+      transition: background-color 0.5s ease, color 0.5s ease, background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    /* 顶部导航栏交互按钮的全新设计 (浅色原版状态) */
+    .theme-btn, .lang-btn {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      color: #374151;
+    }
+    .theme-btn:hover, .lang-btn:hover {
+      background-color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      color: #000;
+      border-color: rgba(0, 0, 0, 0.15);
+    }
+
+    /* =========================================
+       Dark Mode Overrides (V4 - 完全独立隔离的黑夜模式)
+       ========================================= */
+    html.dark body { background-color: #0b0f19 !important; color: #e5e7eb !important; }
+    html.dark #aurora-container { background: #0b0f19 !important; }
+    html.dark .aurora-1 { background: radial-gradient(circle, rgba(37,99,235,0.35) 0%, transparent 70%) !important; }
+    html.dark .aurora-2 { background: radial-gradient(circle, rgba(234,88,12,0.25) 0%, transparent 70%) !important; }
+    html.dark .aurora-3 { background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%) !important; }
+    
+    html.dark nav { background-color: rgba(11, 15, 25, 0.85) !important; border-bottom-color: rgba(255, 255, 255, 0.05) !important; }
+    html.dark nav a { color: #d1d5db !important; }
+    html.dark nav a:hover { color: #60a5fa !important; }
+
+    /* 顶部导航栏交互按钮的全新设计 (深色状态) */
+    html.dark .theme-btn, html.dark .lang-btn {
+      background-color: rgba(31, 41, 55, 0.9) !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+      color: #e5e7eb !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    }
+    html.dark .theme-btn:hover, html.dark .lang-btn:hover {
+      background-color: rgba(55, 65, 81, 1) !important;
+      color: #fff !important;
+      border-color: rgba(96, 165, 250, 0.5) !important;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    html.dark .glass-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)) !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    }
+    html.dark .glass-card::before { background: linear-gradient(180deg, #3b82f6, #ea580c) !important; }
+    html.dark .glass-card:hover {
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7) !important;
+      border-color: rgba(59, 130, 246, 0.4) !important;
+    }
+    
+    html.dark .section-title {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      color: #f3f4f6 !important;
+    }
+    html.dark .section-title i { color: #d1d5db !important; }
+    
+    html.dark .hover-move:hover { color: #fff !important; }
+    html.dark .skill-tag {
+      background-color: rgba(255, 255, 255, 0.05) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      color: #d1d5db !important;
+    }
+    html.dark .skill-tag:hover {
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      color: #fff !important;
+    }
+    html.dark .avatar-wrapper { background-color: #1f2937 !important; border-color: rgba(255, 255, 255, 0.1) !important; }
+    
+    html.dark .btn-primary { background: linear-gradient(135deg, #3b82f6, #2563eb) !important; border-color: rgba(255,255,255,0.1) !important; color: #fff !important; }
+    html.dark .btn-secondary { background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)) !important; border-color: rgba(255,255,255,0.1) !important; color: #fff !important; }
+    
+    html.dark .bg-grid { background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px) !important; }
+    html.dark #bg-canvas { mix-blend-mode: screen !important; }
+    html.dark .scroll-progress { background: linear-gradient(90deg, #3b82f6, #ea580c) !important; box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4) !important; }
+    html.dark .paper-badge { background: linear-gradient(115deg, rgba(59,130,246,0.92), rgba(234,88,12,0.88)) !important; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2) !important; border-color: rgba(255,255,255,0.2) !important; }
+
+    /* 文字颜色强制覆盖 - 更加优雅的冷灰系 (Slate) */
+    html.dark .text-gray-900 { color: #f8fafc !important; }
+    html.dark .text-gray-800 { color: #f1f5f9 !important; }
+    html.dark .text-gray-700 { color: #cbd5e1 !important; }
+    html.dark .text-gray-600 { color: #94a3b8 !important; }
+    html.dark .text-gray-500 { color: #64748b !important; }
+    
+    /* 图标颜色 - 恢复各主题色的暗色版，避免全蓝，提升优雅感 */
+    html.dark .text-pink-500, html.dark .text-pink-400 { color: #f472b6 !important; }
+    html.dark .text-blue-500, html.dark .text-blue-400 { color: #60a5fa !important; }
+    html.dark .text-purple-500, html.dark .text-purple-600 { color: #a78bfa !important; }
+    html.dark .text-yellow-500, html.dark .text-yellow-600 { color: #fbbf24 !important; }
+    html.dark .text-green-600 { color: #34d399 !important; }
+
+    /* 徽章和背景强制覆盖 - 配合对应色调降低饱和度 */
+    html.dark .bg-pink-50 { background-color: rgba(244, 114, 182, 0.1) !important; }
+    html.dark .border-pink-100 { border-color: rgba(244, 114, 182, 0.2) !important; }
+    html.dark .text-pink-600, html.dark .text-pink-700 { color: #fbcfe8 !important; }
+
+    html.dark .bg-blue-50 { background-color: rgba(96, 165, 250, 0.1) !important; }
+    html.dark .border-blue-100 { border-color: rgba(96, 165, 250, 0.2) !important; }
+    html.dark .text-blue-700 { color: #bfdbfe !important; }
+    
+    html.dark .bg-gray-50, html.dark .bg-gray-100 { background-color: rgba(148, 163, 184, 0.1) !important; }
+    html.dark .border-gray-200, html.dark .border-gray-100\/50, html.dark .border-gray-300\/40 { border-color: rgba(75, 85, 99, 0.5) !important; }
+    html.dark .border-white { border-color: rgba(255, 255, 255, 0.1) !important; }
+    
+    html.dark .bg-yellow-50 { background-color: rgba(124, 45, 18, 0.4) !important; }
+    html.dark .border-yellow-100 { border-color: rgba(154, 52, 18, 0.5) !important; }
+    html.dark .text-yellow-700 { color: #fdba74 !important; }
+
+    html.dark .bg-white\/60 { background-color: rgba(255, 255, 255, 0.05) !important; border-color: rgba(255, 255, 255, 0.1) !important; }
+    
+    html.dark .bg-\[\#EC707D\] { background-color: rgba(37, 99, 235, 0.9) !important; }
+    html.dark .bg-\[\#6C95B5\] { background-color: rgba(234, 88, 12, 0.9) !important; }
+
+    /* 时间徽章黑暗模式 - 玻璃态渐变 */
+    html.dark .date-badge {
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(167, 139, 250, 0.15)) !important;
+        color: #e2e8f0 !important;
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 4px 10px rgba(0,0,0,0.2) !important;
+    }
+
+    /* Rule 2: 浅色模式第一页文字全部纯黑 (不包含 welcome 所在的 h1 及 h1 内的元素) */
+    html:not(.dark) #hero-page *:not(h1):not(h1 *) {
+      color: #000000 !important;
+    }
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
+
 <body class="lang-cn">
+
+  <!-- 极简高级首屏 (完全独立于V4内容) -->
+  <section id="hero-page" class="w-full h-[100vh] flex flex-col items-center justify-center relative z-[100] bg-[#030305] overflow-hidden">
+      
+      <!-- 浅色与深色模式下的背景辅助光晕 -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none z-0 hero-parallax-bg"></div>
+      <div class="absolute top-1/3 right-1/4 -translate-y-1/2 w-[50vw] h-[50vw] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none z-0 hero-parallax-bg"></div>
+
+      <!-- 首屏独立的粒子 Canvas (永远保持深色模式设定) -->
+      <canvas id="hero-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-100" style="mix-blend-mode: screen;"></canvas>
+
+      <div id="hero-content" class="relative z-10 flex flex-col items-center text-center px-4 w-full">
+          
+          <!-- 极具表现力的手写花体 Welcome -->
+          <div class="hero-stagger mb-6 md:mb-8 w-full flex justify-center overflow-visible">
+              <h1 class="font-['Great_Vibes'] text-[6rem] md:text-[10rem] lg:text-[13rem] leading-[1.3] py-8 px-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-300 drop-shadow-[0_10px_30px_rgba(59,130,246,0.3)] select-none">
+                  Welcome
+              </h1>
+          </div>
+          
+          <!-- 姓名 (结构化收缩排版，拉大间距) -->
+          <h2 class="hero-stagger text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-100 tracking-widest mb-10 md:mb-12 font-['Inter'] uppercase drop-shadow-sm">
+              <span class="lang-cn" style="font-family: 'STXingkai', 'Xingkai SC', 'STKaiti', 'KaiTi', serif; font-weight: normal; letter-spacing: 0.1em; font-size: 1.2em;">全泽同</span>
+              <span class="lang-en" style="letter-spacing: 0.1em;">Jayden Quan</span>
+          </h2>
+          
+          <div class="hero-stagger flex flex-col items-center gap-7 md:gap-9">
+              <!-- 学历背景标签 -->
+              <div class="px-8 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-md text-gray-300 text-sm md:text-base font-bold tracking-widest flex flex-col items-center gap-2" style="font-family: 'Playfair Display', 'STKaiti', 'KaiTi', serif; font-style: italic;">
+                  <span class="lang-cn">硕士：华中科技大学 • 会计学</span>
+                  <span class="lang-en">Master: Huazhong University of Science and Technology • Accounting</span>
+                  <div class="w-3/4 h-[1px] bg-white/20 my-0.5"></div>
+                  <span class="lang-cn">本科：中南财经政法大学 • 会计学</span>
+                  <span class="lang-en">Bachelor: Zhongnan University of Economics and Law • Accounting</span>
+              </div>
+
+              <!-- 精炼且极具爆发力的核心优势文案 -->
+              <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 text-[0.95rem] md:text-[1.1rem] font-bold text-gray-200 tracking-widest">
+                  <span class="px-2 relative group"><span class="lang-cn">深厚财务底蕴</span><span class="lang-en">Solid Finance Roots</span><div class="absolute -bottom-1.5 left-0 w-full h-[2px] bg-blue-500/50 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div></span>
+                  <span class="text-gray-700 hidden md:block">/</span>
+                  <span class="px-2 relative group"><span class="lang-cn">敏锐数据洞察</span><span class="lang-en">Keen Data Insight</span><div class="absolute -bottom-1.5 left-0 w-full h-[2px] bg-purple-500/50 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div></span>
+                  <span class="text-gray-700 hidden md:block">/</span>
+                  <span class="px-2 relative group"><span class="lang-cn">跨界技术赋能</span><span class="lang-en">Tech Empowerment</span><div class="absolute -bottom-1.5 left-0 w-full h-[2px] bg-indigo-500/50 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div></span>
+              </div>
+          </div>
+      </div>
+
+      <!-- 滚动指示器 -->
+      <div id="hero-scroll" class="hero-stagger absolute bottom-8 flex flex-col items-center cursor-pointer z-10" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
+          <div class="animate-bounce flex flex-col items-center">
+              <span class="text-[0.75rem] font-bold tracking-[0.3em] uppercase text-gray-400 mb-2 lang-cn">向下滚动</span>
+              <span class="text-[0.75rem] font-bold tracking-[0.3em] uppercase text-gray-400 mb-2 lang-en">Scroll</span>
+              <div class="w-[2px] h-12 bg-gradient-to-b from-gray-400 to-transparent"></div>
+          </div>
+      </div>
+  </section>
+
 
   <!-- 特效层容器 -->
   <div id="aurora-container">
@@ -270,7 +487,15 @@
   <!-- 顶部导航栏 -->
   <nav class="sticky top-0 w-full bg-white/50 backdrop-blur-2xl border-b border-gray-100/50 z-50 transition-all">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="hidden md:block w-[140px]"></div>
+      
+  <!-- 左侧主题切换按钮 -->
+  <div class="hidden md:flex w-[160px] items-center">
+    <button onclick="toggleTheme()" class="theme-btn flex items-center justify-center gap-2.5 px-5 py-2.5 rounded-full font-bold text-[0.88rem] cursor-pointer transition-all">
+      <i id="theme-icon" class="fas fa-sun text-yellow-400 text-[1.05rem] transition-colors"></i> 
+      <span id="theme-text" class="lang-en">Light Mode</span><span id="theme-text-cn" class="lang-cn">浅色模式</span>
+    </button>
+  </div>
+
       <div class="flex flex-1 justify-center gap-4 md:gap-12 overflow-x-auto text-[0.95rem] md:text-base font-semibold text-gray-700 tracking-wide no-scrollbar">
         <a href="#home" class="hover:text-pink-50 transition hover:-translate-y-0.5 whitespace-nowrap"><span class="lang-cn">主页</span><span class="lang-en">Home</span></a>
         <a href="#about" class="hover:text-pink-500 transition hover:-translate-y-0.5 whitespace-nowrap"><span class="lang-cn">个人简介</span><span class="lang-en">About Me</span></a>
@@ -278,10 +503,13 @@
         <a href="#experience" class="hover:text-pink-500 transition hover:-translate-y-0.5 whitespace-nowrap"><span class="lang-cn">实习经历</span><span class="lang-en">Experience</span></a>
         <a href="#campus" class="hover:text-pink-500 transition hover:-translate-y-0.5 whitespace-nowrap"><span class="lang-cn">校园经历</span><span class="lang-en">Campus</span></a>
       </div>
-      <div class="flex justify-end md:w-[140px] shrink-0 ml-2">
-        <button onclick="toggleLanguage()" class="bg-white/80 hover:bg-white backdrop-blur-md border border-gray-200 shadow-sm hover:shadow-md rounded-full px-3 py-1.5 md:px-4 md:py-1.5 text-xs md:text-sm font-semibold text-gray-700 hover:text-pink-500 hover:border-pink-300 transition-all hover:-translate-y-0.5 cursor-pointer whitespace-nowrap flex items-center">
-          <i class="fas fa-language mr-1.5 text-blue-500 text-sm"></i> <span id="lang-btn-text">EN</span>
-        </button>
+      <div class="flex justify-end md:w-[160px] shrink-0 ml-2">
+        
+  <button onclick="toggleLanguage()" class="lang-btn flex items-center justify-center gap-2.5 px-5 py-2.5 rounded-full font-bold text-[0.88rem] cursor-pointer whitespace-nowrap transition-all">
+      <i id="lang-icon" class="fas fa-language text-blue-500 text-[1.1rem]"></i> 
+      <span id="lang-btn-text">English</span>
+  </button>
+
       </div>
     </div>
   </nav>
@@ -302,7 +530,7 @@
         
         <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight mb-2">
           <span class="lang-cn">全泽同</span>
-          <span class="lang-en">Zetong Quan</span>
+          <span class="lang-en">Jayden Quan</span>
         </h2>
         
         <div class="text-center text-gray-500 text-[0.85rem] font-medium space-y-1.5 mb-5 w-full border-b border-gray-300/40 pb-5">
@@ -326,7 +554,7 @@
             <span>18071590005</span>
           </div>
           <div class="flex items-center gap-3.5 text-gray-700 transition hover-move font-medium">
-            <div class="w-8 h-8 rounded-full bg-white/60 shadow-sm border border-white flex items-center justify-center text-gray-500"><i class="fas fa-user-shield"></i></div>
+            <div class="w-8 h-8 rounded-full bg-white/60 shadow-sm border border-white flex items-center justify-center text-gray-500"><i class="fas fa-flag"></i></div>
             <span class="lang-cn">中共党员</span>
             <span class="lang-en">CPC Member</span>
           </div>
@@ -392,7 +620,7 @@
                 <i class="fas fa-graduation-cap"></i> Academic Background & Experience
               </h4>
               <p class="leading-relaxed text-gray-700 text-[0.95rem] text-justify">
-                I am <strong class="text-gray-900 text-base mx-1">Zetong Quan</strong>, currently pursuing a full-time Master's degree in Accounting at <strong class="text-gray-900 mx-1">HUST</strong>. I graduated from <strong class="text-gray-900 mx-1">ZUEL</strong> with an outstanding GPA of 3.9/4.0. I have gathered extensive internship experience in Financial BP, Auditing, and Project Management at renowned companies including Midea Group, EY, and BDO. Endowed with a solid foundation in finance, I have passed <span class="bg-pink-50 text-pink-600 px-1.5 py-0.5 rounded font-semibold text-[0.85rem] border border-pink-100 mx-0.5 shadow-sm">5/6 CPA subjects</span> and completed <span class="bg-pink-50 text-pink-600 px-1.5 py-0.5 rounded font-semibold text-[0.85rem] border border-pink-100 mx-0.5 shadow-sm">ACCA</span>.
+                I am <strong class="text-gray-900 text-base mx-1">Jayden Quan</strong>, currently pursuing a full-time Master's degree in Accounting at <strong class="text-gray-900 mx-1">HUST</strong>. I graduated from <strong class="text-gray-900 mx-1">ZUEL</strong> with an outstanding GPA of 3.9/4.0. I have gathered extensive internship experience in Financial BP, Auditing, and Project Management at renowned companies including Midea Group, EY, and BDO. Endowed with a solid foundation in finance, I have passed <span class="bg-pink-50 text-pink-600 px-1.5 py-0.5 rounded font-semibold text-[0.85rem] border border-pink-100 mx-0.5 shadow-sm">5/6 CPA subjects</span> and completed <span class="bg-pink-50 text-pink-600 px-1.5 py-0.5 rounded font-semibold text-[0.85rem] border border-pink-100 mx-0.5 shadow-sm">ACCA</span>.
               </p>
             </div>
             <div class="hover-move">
@@ -523,16 +751,15 @@
             <i class="fas fa-university text-pink-400 text-2xl hidden" style="display:none;"></i>
           </div>
           <div class="flex-1 w-full min-w-0">
-            <div class="flex flex-col xl:flex-row xl:items-start justify-between gap-2 mb-2">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
               <h3 class="font-bold text-lg md:text-xl text-gray-900 hover-move flex flex-wrap items-center gap-2">
                 <span class="lang-cn truncate">华中科技大学</span>
                 <span class="lang-en truncate">Huazhong Univ. of Science and Technology</span>
                 <span class="bg-[#EC707D] text-white text-[0.7rem] md:text-xs px-2 py-0.5 rounded-md font-normal tracking-wide shadow-sm shrink-0">985</span>
                 <span class="bg-[#6C95B5] text-white text-[0.7rem] md:text-xs px-2 py-0.5 rounded-md font-normal tracking-wide shadow-sm shrink-0">211</span>
                 <span class="bg-gray-100 text-gray-600 border border-gray-200 text-[0.7rem] md:text-xs px-2 py-0.5 rounded-md font-normal tracking-wide shrink-0 lang-cn">双一流</span>
-                <span class="bg-gray-100 text-gray-600 border border-gray-200 text-[0.65rem] md:text-[0.7rem] px-2 py-0.5 rounded-md font-normal tracking-wide shrink-0 lang-en">Double First-Class</span>
               </h3>
-              <span class="text-gray-500 text-sm font-semibold tracking-wide shrink-0 xl:mt-1">[2024.09 - 2027.06]</span>
+              <div class="date-badge shrink-0 ml-auto">2024.09-2027.06</div>
             </div>
             <p class="text-gray-700 font-medium mb-3 hover-move text-sm md:text-base border-b border-gray-100/50 pb-2">
               <span class="lang-cn">管理学院 - 会计学 (全日制) 硕士研究生</span>
@@ -551,15 +778,14 @@
             <i class="fas fa-university text-blue-400 text-2xl hidden" style="display:none;"></i>
           </div>
           <div class="flex-1 w-full min-w-0">
-            <div class="flex flex-col xl:flex-row xl:items-start justify-between gap-2 mb-2">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
               <h3 class="font-bold text-lg md:text-xl text-gray-900 hover-move flex flex-wrap items-center gap-2">
                 <span class="lang-cn truncate">中南财经政法大学</span>
                 <span class="lang-en truncate">Zhongnan Univ. of Economics and Law</span>
                 <span class="bg-[#6C95B5] text-white text-[0.7rem] md:text-xs px-2 py-0.5 rounded-md font-normal tracking-wide shadow-sm shrink-0">211</span>
                 <span class="bg-gray-100 text-gray-600 border border-gray-200 text-[0.7rem] md:text-xs px-2 py-0.5 rounded-md font-normal tracking-wide shrink-0 lang-cn">双一流</span>
-                <span class="bg-gray-100 text-gray-600 border border-gray-200 text-[0.65rem] md:text-[0.7rem] px-2 py-0.5 rounded-md font-normal tracking-wide shrink-0 lang-en">Double First-Class</span>
               </h3>
-              <span class="text-gray-500 text-sm font-semibold tracking-wide shrink-0 xl:mt-1">[2020.09 - 2024.06]</span>
+              <div class="date-badge shrink-0 ml-auto">2020.09-2024.06</div>
             </div>
             <p class="text-gray-700 font-medium mb-3 hover-move text-sm md:text-base border-b border-gray-100/50 pb-2">
               <span class="lang-cn">会计学院 - 会计学 (全日制) 本科</span>
@@ -582,11 +808,13 @@
         </h1>
         
         <div class="glass-card p-7 mb-6 pl-8">
-          <div class="paper-badge">2025.06-2025.10</div>
-          <h3 class="font-bold text-lg mb-2 text-gray-900 hover-move">
-            <span class="lang-cn">美的集团(上海)有限公司</span>
-            <span class="lang-en">Midea Group (Shanghai) Co., Ltd.</span>
-          </h3>
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+            <h3 class="font-bold text-lg text-gray-900 hover-move mb-0">
+              <span class="lang-cn">美的集团(上海)有限公司</span>
+              <span class="lang-en">Midea Group (Shanghai) Co., Ltd.</span>
+            </h3>
+            <div class="date-badge shrink-0 ml-auto">2025.06-2025.10</div>
+          </div>
           <p class="text-sm text-gray-600 mb-5 hover-move border-b border-gray-100/50 pb-3">
             <strong class="lang-cn text-pink-500">财务BP实习生</strong><strong class="lang-en text-pink-500">Financial BP Intern</strong>
             <span class="lang-cn"> | 库卡汽车自动化事业部</span><span class="lang-en"> | KUKA Robotics Automation Div.</span>
@@ -648,11 +876,13 @@
         </div>
 
         <div class="glass-card p-7 mb-6 pl-8">
-          <div class="paper-badge">2023.12-2024.04</div>
-          <h3 class="font-bold text-lg mb-2 text-gray-900 hover-move">
-            <span class="lang-cn">安永华明会计师事务所(深圳分所)</span>
-            <span class="lang-en">Ernst & Young Hua Ming LLP (Shenzhen Branch)</span>
-          </h3>
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+            <h3 class="font-bold text-lg text-gray-900 hover-move mb-0">
+              <span class="lang-cn">安永华明会计师事务所(深圳分所)</span>
+              <span class="lang-en">Ernst & Young Hua Ming LLP (Shenzhen Branch)</span>
+            </h3>
+            <div class="date-badge shrink-0 ml-auto">2023.12-2024.04</div>
+          </div>
           <p class="text-sm text-gray-600 mb-5 hover-move border-b border-gray-100/50 pb-3">
             <strong class="lang-cn text-blue-500">金融组实习生</strong><strong class="lang-en text-blue-500">Audit Intern (Financial Services)</strong>
             <span class="lang-cn"> | 某头部基金公司年报审计</span><span class="lang-en"> | Annual Audit for Top Fund Products</span>
@@ -702,11 +932,13 @@
         </div>
 
         <div class="glass-card p-7 mb-6 pl-8">
-          <div class="paper-badge">2022.12-2023.04</div>
-          <h3 class="font-bold text-lg mb-2 text-gray-900 hover-move">
-            <span class="lang-cn">立信会计师事务所(武汉分所)</span>
-            <span class="lang-en">BDO China Shu Lun Pan CPAs LLP (Wuhan)</span>
-          </h3>
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+            <h3 class="font-bold text-lg text-gray-900 hover-move mb-0">
+              <span class="lang-cn">立信会计师事务所(武汉分所)</span>
+              <span class="lang-en">BDO China Shu Lun Pan CPAs LLP (Wuhan)</span>
+            </h3>
+            <div class="date-badge shrink-0 ml-auto">2022.12-2023.04</div>
+          </div>
           <p class="text-sm text-gray-600 mb-5 hover-move border-b border-gray-100/50 pb-3">
             <strong class="lang-cn text-gray-700">审计组实习生</strong><strong class="lang-en text-gray-700">Audit Intern</strong>
             <span class="lang-cn"> | 某大型食品企业年报审计</span><span class="lang-en"> | Annual Report Audit for Food Enterprise</span>
@@ -753,11 +985,13 @@
         </h1>
         
         <div class="glass-card p-7 mb-6 pl-8">
-          <div class="paper-badge">2021.12-2023.06</div>
-          <h3 class="font-bold text-lg mb-2 text-gray-900 hover-move">
-            <span class="lang-cn">大学生创新创业训练项目</span>
-            <span class="lang-en">National Innovation & Entrepreneurship Training Program</span>
-          </h3>
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+            <h3 class="font-bold text-lg text-gray-900 hover-move mb-0">
+              <span class="lang-cn">大学生创新创业训练项目</span>
+              <span class="lang-en">National Innovation & Entrepreneurship Training Program</span>
+            </h3>
+            <div class="date-badge shrink-0 ml-auto">2021.12-2023.06</div>
+          </div>
           <p class="text-sm text-gray-600 mb-5 hover-move border-b border-gray-100/50 pb-3">
             <strong class="lang-cn text-pink-500">项目负责人</strong><strong class="lang-en text-pink-500">Project Leader</strong>
             <span class="lang-cn"> | 省级立项</span><span class="lang-en"> | Provincial Level</span>
@@ -795,11 +1029,13 @@
         </div>
 
         <div class="glass-card p-7 mb-6 pl-8">
-          <div class="paper-badge">2020.12-2022.06</div>
-          <h3 class="font-bold text-lg mb-2 text-gray-900 hover-move">
-            <span class="lang-cn">国际会计沙龙组织</span>
-            <span class="lang-en">International Accounting Salon</span>
-          </h3>
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+            <h3 class="font-bold text-lg text-gray-900 hover-move mb-0">
+              <span class="lang-cn">国际会计沙龙组织</span>
+              <span class="lang-en">International Accounting Salon</span>
+            </h3>
+            <div class="date-badge shrink-0 ml-auto">2020.12-2022.06</div>
+          </div>
           <p class="text-sm text-gray-600 mb-5 hover-move border-b border-gray-100/50 pb-3">
             <strong class="lang-cn text-blue-500">学生秘书长</strong><strong class="lang-en text-blue-500">Student Secretary-General</strong>
           </p>
@@ -841,6 +1077,27 @@
 
   <!-- 页面交互脚本 -->
   <script>
+    
+// 0.5 主题切换逻辑
+function toggleTheme() {
+  const html = document.documentElement;
+  const themeIcon = document.getElementById('theme-icon');
+  const themeTextEn = document.getElementById('theme-text');
+  const themeTextCn = document.getElementById('theme-text-cn');
+  
+  if (html.classList.contains('dark')) {
+    html.classList.remove('dark');
+    themeIcon.className = 'fas fa-moon text-indigo-500 text-[1.05rem]';
+    themeTextEn.innerText = 'Dark Mode';
+    themeTextCn.innerText = '深色模式';
+  } else {
+    html.classList.add('dark');
+    themeIcon.className = 'fas fa-sun text-yellow-400 text-[1.05rem]';
+    themeTextEn.innerText = 'Light Mode';
+    themeTextCn.innerText = '浅色模式';
+  }
+}
+
     // 0. 中英文切换
     function toggleLanguage() {
       const body = document.body;
@@ -848,13 +1105,51 @@
       if (body.classList.contains('lang-cn')) {
         body.classList.remove('lang-cn');
         body.classList.add('lang-en');
-        btnText.innerText = 'CN';
+        btnText.innerText = '中文';
       } else {
         body.classList.remove('lang-en');
         body.classList.add('lang-cn');
-        btnText.innerText = 'EN';
+        btnText.innerText = 'English';
       }
     }
+
+    
+    // 首屏视差滚动与淡出 (绝对不干扰原版V4任何元素，只对上方 injected 的元素生效)
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. 首屏错峰入场淡入动效 (Staggered Fade-in)
+    gsap.fromTo(".hero-stagger", 
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: "power3.out", delay: 0.2 }
+    );
+
+
+    // 让文字与头像向下滚动时，平滑视差下沉并淡出 (取代向左缩放)
+    gsap.to("#hero-content", {
+        scrollTrigger: {
+            trigger: "#hero-page",
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+        },
+        y: "35%", // 产生被下方页面“盖过”的视差纵深感
+        opacity: 0,
+        ease: "none"
+    });
+
+    // 滚动指示器快速淡出
+    gsap.to("#hero-scroll", {
+        scrollTrigger: {
+            trigger: "#hero-page",
+            start: "top top",
+            end: "+=200",
+            scrub: true
+        },
+        opacity: 0,
+        y: 20,
+        ease: "none"
+    });
+
 
     // 1. 鼠标交互光晕特效与流体 Aurora 滚动互动
     const blob1 = document.querySelector('.aurora-1');
@@ -917,6 +1212,71 @@
       revealObserver.observe(el);
     });
 
+    
+    // =========================================
+    // 首屏独立粒子特效 (随主题智能变色) - 流星特效
+    // =========================================
+    const heroCanvas = document.getElementById('hero-canvas');
+    if (heroCanvas) {
+        const hCtx = heroCanvas.getContext('2d');
+        let hWidth = heroCanvas.width = window.innerWidth;
+        let hHeight = heroCanvas.height = window.innerHeight;
+        const heroParticles = [];
+        
+        // 生成流星
+        for (let i = 0; i < 40; i++) {
+            heroParticles.push({
+                x: Math.random() * hWidth * 1.5,
+                y: Math.random() * hHeight,
+                length: Math.random() * 80 + 20, 
+                speed: Math.random() * 2 + 1.5,
+                angle: Math.PI / 4, 
+                opacity: Math.random() * 0.5 + 0.2 
+            });
+        }
+        
+        function drawHeroParticles() {
+            const pColor = '255, 255, 255'; 
+            heroCanvas.style.mixBlendMode = 'screen';
+            
+            hCtx.clearRect(0, 0, hWidth, hHeight);
+            heroParticles.forEach(p => {
+                hCtx.beginPath();
+                let grad = hCtx.createLinearGradient(p.x, p.y, p.x - p.length * Math.cos(p.angle), p.y - p.length * Math.sin(p.angle));
+                grad.addColorStop(0, 'rgba(' + pColor + ', ' + p.opacity + ')');
+                grad.addColorStop(1, 'rgba(' + pColor + ', 0)');
+
+                hCtx.moveTo(p.x, p.y);
+                hCtx.lineTo(p.x - p.length * Math.cos(p.angle), p.y - p.length * Math.sin(p.angle));
+                
+                hCtx.strokeStyle = grad;
+                hCtx.lineWidth = 2;
+                hCtx.shadowBlur = 15;
+                hCtx.shadowColor = 'rgba(' + pColor + ', ' + p.opacity + ')';
+                
+                hCtx.stroke();
+                hCtx.shadowBlur = 0;
+                
+                p.x += p.speed * Math.cos(p.angle);
+                p.y += p.speed * Math.sin(p.angle);
+                
+                if (p.x - p.length > hWidth || p.y - p.length > hHeight) {
+                    p.x = Math.random() * hWidth * 1.5 - hWidth * 0.5;
+                    p.y = -100;
+                    p.speed = Math.random() * 2 + 1.5;
+                }
+            });
+            requestAnimationFrame(drawHeroParticles);
+        }
+        drawHeroParticles();
+        
+        window.addEventListener('resize', () => {
+            hWidth = heroCanvas.width = window.innerWidth;
+            hHeight = heroCanvas.height = window.innerHeight;
+        });
+    }
+
+
     // 3. 极简高级“呼吸感”粒子特效
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
@@ -940,10 +1300,25 @@
     
     function drawParticles() {
       ctx.clearRect(0, 0, width, height);
+      
+      // 计算中间卡片区域 (避免光斑重叠影响阅读)
+      let contentHalfWidth = Math.min(width * 0.9, 1152) / 2;
+      let centerX = width / 2;
+
       particles.forEach(p => {
         p.phase += p.phaseSpeed;
+        
+        // 当光斑在中间卡片区域内时，降低透明度至近乎不可见
+        let distToCenter = Math.abs(p.x - centerX);
+        let alphaMult = 1;
+        if (distToCenter < contentHalfWidth + 20) {
+            alphaMult = 0.05; // 完全在卡片后面时变暗
+        } else if (distToCenter < contentHalfWidth + 120) {
+            alphaMult = 0.05 + 0.95 * ((distToCenter - (contentHalfWidth + 20)) / 100); // 边缘平滑过渡
+        }
+
         const currentR = p.baseR * (1 + 0.5 * Math.sin(p.phase));
-        const currentOpacity = p.baseOpacity * (1 + 0.5 * Math.sin(p.phase));
+        const currentOpacity = p.baseOpacity * (1 + 0.5 * Math.sin(p.phase)) * alphaMult;
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, Math.max(0, currentR), 0, Math.PI * 2);
